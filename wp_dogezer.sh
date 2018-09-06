@@ -1,4 +1,6 @@
 #!/bin/bash
+curl -O -L https://raw.githubusercontent.com/nikitarams/static-html-output-plugin/master/static-html-output-plugin.tar.gz
+tar -xzf static-html-output-plugin.tar.gz -C /opt/bitnami/wordpress/wp-content/plugins/
 cp /bitnami/wordpress/wp-config.php /opt/bitnami/wordpress/wp-config.php.old
 FILTER_LINE=$(expr $(grep -n -m 1 add_filter /bitnami/wordpress/wp-config.php  | cut -d':' -f1) - 1)
 head -$FILTER_LINE /opt/bitnami/wordpress/wp-config.php.old > /bitnami/wordpress/wp-config.php
